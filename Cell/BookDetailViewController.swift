@@ -18,6 +18,14 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookPublisherLabel: UILabel!
     @IBOutlet weak var bookDescriptionTextView: UITextView!
     
+    
+    //////////////////////
+//    @IBOutlet weak var bookCoverImageView: UIImageView!
+//    @IBOutlet weak var bookAuthorLabel: UILabel!
+//    @IBOutlet weak var bookPriceLabel: UILabel!
+//    @IBOutlet weak var bookPublisherLabel: UILabel!
+//    @IBOutlet weak var bookDescriptionTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +38,11 @@ class BookDetailViewController: UIViewController {
         self.bookCoverImageView.image = newBook.coverImage
         self.bookAuthorLabel.text = newBook.writer
         self.bookPublisherLabel.text = newBook.publisher
-        self.bookPriceLabel.text = String(newBook.price)
+        
+        if let bookPrice = newBook.price{
+            self.bookPriceLabel.text = String(bookPrice)
+        }
+        
         self.bookDescriptionTextView.text = newBook.description
         
         // Title 표시

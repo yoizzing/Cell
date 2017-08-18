@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class BookLIstTableViewController: UITableViewController {
+class BookLIstTableViewController: UITableViewController, AddBookDelegate {
     
     var books:[Book] = Array()
     //var books:[String] = ["홍길동", "김철수", "고길동", "둘리"]
@@ -42,9 +42,18 @@ class BookLIstTableViewController: UITableViewController {
                          description: "어제 노트북을 켜고 ‘사람’을 입력하려다 실수로 ‘삶’을 쳤다. 그러고 보니 ‘사람’에서 슬며시 받침을 바꾸면 ‘사랑’이 되고 ‘사람’에서 은밀하게 모음을 빼면 ‘삶’이 된다. 세 단어가 닮아서일까. 사랑에 얽매이지 않고 살아가는 사람도, 사랑이 끼어들지 않는 삶도 없는 듯하다. ",
                          url: "http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791195522125&orderClick=LEB&Kc=")
         
+//        let book4 = Book(title: "iPhone SDK Tutorial",
+//                         writer: nil,
+//                         publisher: nil,
+//                         coverImage: nil,
+//                         price: nil,
+//                         description: nil)
+        
+        
         self.books.append(book1)
         self.books.append(book2)
         self.books.append(book3)
+//        self.books.append(book4)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -82,11 +91,18 @@ class BookLIstTableViewController: UITableViewController {
             let numFormatter:NumberFormatter = NumberFormatter()
             numFormatter.numberStyle = NumberFormatter.Style.decimal
             let price = book.price
-            let priceStr = numFormatter.string(from: NSNumber(integerLiteral: price))
+            
+            if let price = book.price{
+                let priceStr = numFormatter.string(from: NSNumber(integerLiteral: price))
+                bookCell.bookPriceLabel.text = priceStr
+            }else{
+                bookCell.bookPriceLabel.text=""
+            }
+
             
             bookCell.bookTitleLabel.text = book.title
             bookCell.bookWriterLabel.text = book.writer
-            bookCell.bookPriceLabel.text = priceStr
+
             bookCell.bookImageView.image = book.coverImage
             return bookCell
         }
@@ -148,19 +164,35 @@ class BookLIstTableViewController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as? UITableViewCell
-        let vc = segue.destination as? BookDetailViewController
         
-        guard let selectedCell = cell, let detailVC = vc else{
-            return
+        if segue.identifier == "addvc" {
+            
+            if let addVC = segue.destination as? AddBookViewController{
+                addVC.delegate = self
+            }
+            
+        }else if segue.identifier == "detailvc"{
+            
+            let cell = sender as? UITableViewCell
+            let vc = segue.destination as? BookDetailViewController
+            
+            guard let selectedCell = cell, let detailVC = vc else{
+                return
+            }
+            
+            if let idx = self.tableView.indexPath(for: selectedCell){
+                detailVC.book = self.books[idx.row]
+            }
+            
         }
-        
-        if let idx = self.tableView.indexPath(for: selectedCell){
-            detailVC.book = self.books[idx.row]
-        }
-        
         
     }
+    
+    func sendNewBook(book:Book){
+        self.books.append(book)
+        self.tableView.reloadData()
+    }
+    
 }
 
 class BookTableViewCell: UITableViewCell {
