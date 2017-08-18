@@ -12,6 +12,11 @@
 		FA017CA81F454FA20078F13F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA017CA61F454FA20078F13F /* Main.storyboard */; };
 		FA017CAA1F454FA20078F13F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA017CA91F454FA20078F13F /* Assets.xcassets */; };
 		FA017CAD1F454FA20078F13F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA017CAB1F454FA20078F13F /* LaunchScreen.storyboard */; };
+		FA017CB51F4550130078F13F /* BookLIstTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA017CB41F4550130078F13F /* BookLIstTableViewController.swift */; };
+		FA017CB71F455A450078F13F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA017CB61F455A450078F13F /* Book.swift */; };
+		FA017CB91F4563380078F13F /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA017CB81F4563380078F13F /* BookDetailViewController.swift */; };
+		FA017CBB1F456E750078F13F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA017CBA1F456E750078F13F /* WebViewController.swift */; };
+		FA7B1BBD1F466CA40027D272 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7B1BBC1F466CA40027D272 /* AddBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		FA017CA91F454FA20078F13F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA017CAC1F454FA20078F13F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA017CAE1F454FA20078F13F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA017CB41F4550130078F13F /* BookLIstTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLIstTableViewController.swift; sourceTree = "<group>"; };
+		FA017CB61F455A450078F13F /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		FA017CB81F4563380078F13F /* BookDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		FA017CBA1F456E750078F13F /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		FA7B1BBC1F466CA40027D272 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 				FA017CA91F454FA20078F13F /* Assets.xcassets */,
 				FA017CAB1F454FA20078F13F /* LaunchScreen.storyboard */,
 				FA017CAE1F454FA20078F13F /* Info.plist */,
+				FA017CB41F4550130078F13F /* BookLIstTableViewController.swift */,
+				FA017CB61F455A450078F13F /* Book.swift */,
+				FA017CB81F4563380078F13F /* BookDetailViewController.swift */,
+				FA017CBA1F456E750078F13F /* WebViewController.swift */,
+				FA7B1BBC1F466CA40027D272 /* AddBookViewController.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -136,8 +151,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA017CB71F455A450078F13F /* Book.swift in Sources */,
+				FA017CBB1F456E750078F13F /* WebViewController.swift in Sources */,
 				FA017CA51F454FA20078F13F /* ViewController.swift in Sources */,
+				FA7B1BBD1F466CA40027D272 /* AddBookViewController.swift in Sources */,
+				FA017CB51F4550130078F13F /* BookLIstTableViewController.swift in Sources */,
 				FA017CA31F454FA20078F13F /* AppDelegate.swift in Sources */,
+				FA017CB91F4563380078F13F /* BookDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +321,7 @@
 				FA017CB31F454FA20078F13F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
