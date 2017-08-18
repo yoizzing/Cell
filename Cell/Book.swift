@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class Book {
+class Book: NSObject, NSCoding {
     var title:String
     var writer:String?
     var publisher:String?
     var coverImage:UIImage?
     var price:Int?
-    var description:String?
+    var desc:String?
     var url:String?
     
     init(title:String,
@@ -23,7 +23,7 @@ class Book {
          publisher:String?,
          coverImage:UIImage?,
          price:Int?,
-         description:String?,
+         desc:String?,
          url:String?){
         
         self.title       = title
@@ -31,7 +31,7 @@ class Book {
         self.publisher   = publisher
         self.coverImage  = coverImage
         self.price       = price
-        self.description = description
+        self.desc        = desc
         self.url         = url
         
     }
@@ -44,8 +44,30 @@ class Book {
                   publisher:nil,
                   coverImage:nil,
                   price:nil,
-                  description:nil,
+                  desc:nil,
                   url:nil)
+    }
+    
+    // 파일의 내용을 인스턴스화 시킬 때 호출되는 내용
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.title, forKey:"title")
+        aCoder.encode(self.writer, forKey:"writer")
+        aCoder.encode(self.publisher, forKey:"publisher")
+        aCoder.encode(self.coverImage, forKey:"coverImage")
+        aCoder.encode(self.price, forKey:"price")
+        aCoder.encode(self.desc, forKey:"desc")
+        aCoder.encode(self.url, forKey:"url")
+    }
+    
+    // 특정 인스턴스를 파일로 만들 때 호출되는 내용
+    required init?(coder aDecoder: NSCoder) {
+        self.title = aDecoder.decodeObject(forKey: "title") as! String
+        self.writer = aDecoder.decodeObject(forKey: "writer") as! String
+        self.publisher = aDecoder.decodeObject(forKey: "publisher") as! String
+        self.coverImage = aDecoder.decodeObject(forKey: "coverImage") as! UIImage
+        self.price = aDecoder.decodeObject(forKey: "price") as! Int
+        self.desc = aDecoder.decodeObject(forKey: "desc") as! String
+        self.url = aDecoder.decodeObject(forKey: "url") as! String
     }
     
 //    init(title:String, writer:String, publisher:String){
